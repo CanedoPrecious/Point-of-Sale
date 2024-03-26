@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +50,33 @@
 
 <div class="container">
   <h4 class="text-center mt-2 h-font">Login</h4>
-  <form action="dashboard.php" method="post">
+
+  <?php
+  if (isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    include("./config/database.php");
+    $sql= "SELECT * FROM pos_users WHERE u_username='$username' AND u_password='$password' ";
+    $result = mysqli_query($conn, $sql);
+    $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+    if ($user) {
+      if (password_verify($password, $user['password'])) {
+        header("Location: './dashboard.php'");
+        die();
+
+      }else {
+        echo "<div class= 'alert alert-danger'>Pasword does not match!</div>";
+      }
+
+    }else {
+      echo "<div class= 'alert alert-danger'>Username does not match!</div>";
+    }
+  }
+  ?>
+  
+  <form action="login.php" method="post">
     <div class="form-group">
       <label class="form-label">Username:</label>
       <input type="text" class="form-control" name="username">
@@ -64,6 +91,7 @@
       <p>Don't have an account? <a href="index.php">Register Here</a></p>
     </div>
   </form>
+</div>
 </div>
 </body>
 </html>
