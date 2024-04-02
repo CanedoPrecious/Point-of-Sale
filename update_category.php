@@ -1,5 +1,27 @@
+
 <?php
 include('./config/database.php');
+$category=$_GET['updateid'];
+
+if (isset($_POST['submit'])) {
+   $id= $_POST['c_id'];
+    $category = $_POST['c_category'];
+    $description = $_POST['c_description'];
+
+
+   $sql="UPDATE `pos_categori` SET `c_id`='$id',`c_category`='$category',
+   `c_description`=' $description' WHERE `c_category`='$category' ";
+
+    $result= mysqli_query($conn, $sql);
+
+   if ($result) {
+    header("Location: category.php?msg=Successfully Updated");
+   }
+   else {
+    echo "Failed: ". mysqli_error($conn);
+   }
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +29,7 @@ include('./config/database.php');
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel-Inventory Management</title>
+  <title>Admin Panel-Update Category</title>
   
    <!-- Bootstrap CSS -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,17 +43,18 @@ include('./config/database.php');
   crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 
-<body >
-<div class="container-fluid text-dark p-3 d-flex align-items-center justify-content-between sticky-top" style=" box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
-    <h4 class="mb-0 h-font">TAGOLOAN PUBLIC MARKET </h4>
-   
+<body>
+
+    <div class="container-fluid text-dark p-3 d-flex align-items-center justify-content-between sticky-top" style=" box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+      <h4 class="mb-0 h-font">TAGOLOAN PUBLIC MARKET </h4>
+      
     <form action="./logout.php" method="post">
       <button type="submit" class="btn btn-danger" name="logout">Logout</button>
     </form> 
      
-</div>
+    </div>
 
-<div class="col-lg-2 bg-dark border-top border-3 border-secondary" id="dashboard-home">
+    <div class="col-lg-2 bg-dark border-top border-3 border-secondary" id="dashboard-home">
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid flex-lg-column align-items-stretch">
       <h4 class="mt-2 text-light">Point of Sale</h4>
@@ -79,69 +102,51 @@ include('./config/database.php');
       </div>
     </div>
   </nav>
-</div>
-   
-<div class="container-fluid mt-4"> 
-  <div class="row">
-    <div class="col-lg-10 ms-auto p-4 overflow-hidden ">
-    <h3>Inventory Management</h3>
-
-    <div class="card">
-      <div class="card-body mt-2">
-      <table class="table table-bordered table-hover">
-       
-       <thead>
-         <tr class="table-dark">
-           <th width="50" style="text-align: center;">No.</th>
-           <th width="150" style="text-align: center; ">Product Name</th>
-           <th width="150" style="text-align: center;">Sales Date</th>
-           <th width="100" style="text-align: center;">Price</th>
-           <th width="100" style="text-align: center;">Sales Qty</th>
-           <th width="50" style="text-align: center;">Total Amount</th>
-         </tr>
-       </thead>
-       <tbody>
-       <tr>
-   <th scope="row">1</th>
-   <td>1001</td>
-   <td>03-20-2024</td>
-   <td>10</td>
-   <td>10</td>
-   <td>100</td>
- </tr>
- <tr>
-   <th scope="row">2</th>
-   <td>1002</td>
-   <td>03-20-2024</td>
-   <td>15</td>
-   <td>10</td>
-   <td>150</td>
- </tr>
- <tr>
-   <th scope="row">3</th>
-   <td>1005</td>
-   <td>03-21-2024</td>
-   <td>15</td>
-   <td>10</td>
-   <td>150</td>
- </tr>
- <tr>
-<th ></th>
-   <td></td>
-   <td></td>
-   <td><h6 style="text-align: center; ">Total:</h6></td>
-   <td><h6 style="text-align: center; ">30</h6></td>
-   <td><h6 style="text-align: center; ">400</h6></td>
- </tr>
-     </tbody>
-</table>
-
-      </div>
     </div>
-     
-</div>
-</div>
-</div>
-  
+
+
+
+    <div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+
+        <div class="card">
+        <div class=" card-header mb-4">
+            <h4 class="mt-4">Update Category</h4>
+          </div>
+
+          <?php
+          
+
+          
+          ?>
+        
+          <div class="card-body">
+                <form action="" method="post"  >
+                    <div class="row mb-3">
+                        <div class="col">
+                            <lable class="form-label">Category Name:</lable>
+                            <input type="text" class="form-control mt-2" name="c_category">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                        <label class="form-label">Description:</label>
+                        <textarea required class="form-control mt-2" row="1" name="c_description"></textarea>
+                        </div>
+                    </div>
+                        
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-success" name="submit">Update</button>
+                        <a href="./category.php" class="btn btn-danger">Cancel</a>
+                    </div>
+                </form>    
+            </div> 
+          </div> 
+        </div>
+      </div>
+    </div> 
+  </div>
 </body>
 </html>

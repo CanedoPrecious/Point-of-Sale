@@ -2,30 +2,34 @@
 <?php
 include('./config/database.php');
 
+$code=$_GET['updateid'];
+
 if (isset($_POST['submit'])) {
-    $c_category = $_POST['c_category'];
-    $c_description = $_POST['c_description'];
 
-    $sql= "INSERT INTO `pos_categori`(`c_category`,`c_description`) 
-    VALUES ('$c_category ','$c_description')";
+  $code=$_POST['P_code'];
+  $product=$_POST['P_name'];
+  $category=$_POST['P_category'];
+  $stock=$_POST['P_stock'];
+  $price=$_POST['P_price'];
 
-    $result= mysqli_query($conn, $sql);
+  $sql= "UPDATE `pos_product` SET P_code= $code,P_name='$product',P_category_id='$category',P_stock=$stock,P_price=$price
+  WHERE P_code=$code";
+  $result=mysqli_query($conn, $sql);
 
-    if ($result) {
-      header("Location: category.php?msg=Successfully Added");
-     }
-     else {
-      echo "Failed: ". mysqli_error($conn);
-     }
+  if ($result) {
+    header("Location: product.php?msg=Successfully Updated");
+  }else {
+    echo "Failed: ". mysqli_error($conn);
+  }
+
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel-Add Category</title>
+  <title>Admin Panel-Update Product</title>
   
    <!-- Bootstrap CSS -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,16 +43,15 @@ if (isset($_POST['submit'])) {
   crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 
-
-
 <body>
+
   <div class="container-fluid text-dark p-3 d-flex align-items-center justify-content-between sticky-top" style=" box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
     <h4 class="mb-0 h-font">TAGOLOAN PUBLIC MARKET </h4>
-
+    
     <form action="./logout.php" method="post">
       <button type="submit" class="btn btn-danger" name="logout">Logout</button>
     </form> 
-
+     
   </div>
 
   <div class="col-lg-2 bg-dark border-top border-3 border-secondary" id="dashboard-home">
@@ -102,42 +105,63 @@ if (isset($_POST['submit'])) {
   </div>
 
 
+  
   <div class="container mt-4">
     <div class="row">
-      <div class="col-md-10 ms-auto p-4 overflow-hidden">
+      <div class="col-lg-10 ms-auto p-4 overflow-hidden">
+     
 
-        <div class="card">
-          <div class="card-header mb-4">
-            <h4 class="mt-4">Add New Category</h4>
+        <div class="card align-items-center">
+        <div class=" card-header mb-4">
+            <h4 class="mt-4">Update Product</h4>
           </div>
+
         
-          <div class="card-body">
-              <form action="" method="post"  >
-                <div class="row mb-3">
-                  <div class="col">
-                    <lable class="form-label">Category Name:</lable>
-                    <input type="text"  required class="form-control mt-2" name="c_category">
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <div class="col">
-                     <label class="form-label">Description:</label>
-                      <textarea required class="form-control mt-2" row="2" name="c_description"></textarea>
-                  </div>
-                </div>
-                        
-                <div class="mt-4">
-                  <button type="submit" class="btn btn-success" name="submit">Save</button>
-                    <a href="./category.php" class="btn btn-danger">Cancel</a>
-                </div>
+          <div class="card-body ">
+          <form action="./update_product.php" method="post">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <lable class="form-label">Product Code:</lable>
+                            <input type="number" required class="form-control mt-2" name="P_code" value="<?php echo $row['P_code']?>" >
+                        </div>
+                        <div class="col">
+                            <lable class="form-label">Product Name:</lable>
+                            <input type="text"  required class="form-control mt-2" name="P_name"  >
+                        </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="col">
+                        <lable class="form-label">Category:</lable>
+                        <select name="P_category" required class="form-control mt-2">
+                            <option id="bread" value="Bread & Pastry">Bread & Pastry</option>
+                            <option id="fresh" value="Fresh Produce">Fresh Produce</option>
+                            <option id="seafood" value="Seafoods">Seafoods</option>
+                            <option id="goods" value="Can goods">Can goods</option>
+                        </select>
+                        </select>
+                        </div>
+                        <div class="col">
+                            <lable class="form-label">Stock:</lable>
+                            <input type="number" required class="form-control mt-2" name="P_stock"  >
+                        </div>
+                        <div class="col">
+                            <lable class="form-label">Price(Php):</lable>
+                            <input type="number"  required class="form-control mt-2" name="P_price">
+                        </div>
+                    </div>
+
+                   <div class="mt-4">
+                        <button type="submit" class="btn btn-success" name="submit">Update</button>
+                        <a href="./product.php" class="btn btn-danger">Cancel</a>
+                    </div>
               </form> 
             </div>
           </div> 
         </div>
       </div>
     </div> 
-  </div>
-</body>  
+  </div>  
+</body>
 </html>

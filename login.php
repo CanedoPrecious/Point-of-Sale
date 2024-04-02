@@ -1,3 +1,41 @@
+<?php
+ require("./config/database.php");
+
+ if (isset($_POST['login']))
+ {
+  $username=validate($_POST['u_username']);
+  $password=validate($_POST['u_password']);
+
+  $uname= filter_var($username, FILTER_SANITIZE_STRING);
+  $pword= filter_var($password, FILTER_SANITIZE_STRING);
+
+  if ($uname != '' && $pword !='')
+   {
+   $ql = "SELECT * FROM pos_users WHERE u_username='$uname' AND u_password='$pword' LIMIT 1";
+   $result= mysqli_query($conn, $query);
+
+   if ($result) 
+   {
+    if (mysqli_num_rows($result)==1) 
+    {
+      $row=mysqli_fetch_array($result, MYSQLI_ASSOC);
+      redirect('dashboard','Logged In Successfully');
+      
+    }else {
+      redirect('login.php', 'Incorrect Email or Password');
+     }
+  
+   }else {
+    redirect('login.php', 'Something went wrong');
+   }
+
+  }else {
+    redirect('login.php', 'All Fields are required');
+   }
+  
+ }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +45,8 @@
   <title>Document</title>
 </head>
 <body>
-<title>POINT OF SALE</title>
+<title>Admin Panel-Login</title>
+
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
  
@@ -17,16 +56,16 @@
 <!-- Font -->
  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
  
-   <style>
+  <style>
     .h-font{
       font-family: "Poppins", sans-serif;
     }
 
- body {
+     body {
       background: linear-gradient(to right, #17a2b8, #FFA500) 100%;
      }
     
-.container {
+   .container {
     max-width: 600px;
     margin:0 auto;
     margin-top:100px;
@@ -44,46 +83,43 @@
     border-radius: 50px;
     border: none;
    }
-   </style>
-   </head>
-   <body>
+  </style>
+</head>
+<body>
 
 <div class="container">
   <h4 class="text-center mt-2 h-font">Login</h4>
 
   <?php
-  if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+  /*
+  if (isset($_POST['login'])) 
+  {
 
-    include("./config/database.php");
-    $sql= "SELECT * FROM pos_users WHERE u_username='$username' AND u_password='$password' ";
+    $username= mysqli_real_escape_string($conn, $_POST['u_username']);
+    $password= mysqli_real_query($conn, $_POST['u_password']);
+
+    $sql= "SELECT * FROM `pos_users` WHERE `u_username`='$username' AND `u_password`='$password'";
     $result = mysqli_query($conn, $sql);
-    $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-    if ($user) {
-      if (password_verify($password, $user['password'])) {
-        header("Location: './dashboard.php'");
-        die();
-
-      }else {
-        echo "<div class= 'alert alert-danger'>Pasword does not match!</div>";
-      }
+   if(mysqli_num_rows($result) > 0)
+    {
+      header('Location: dashboard.php');
 
     }else {
-      echo "<div class= 'alert alert-danger'>Username does not match!</div>";
+      header('Location: login.php?msg=Invalid Credentials');
     }
-  }
+  }*/
   ?>
-  
+
+
   <form action="login.php" method="post">
     <div class="form-group">
       <label class="form-label">Username:</label>
-      <input type="text" class="form-control" name="username">
+      <input type="text" class="form-control" name="u_username">
     </div>
     <div class="form-group">
       <label class="form-label">Password:</label>
-      <input type="password" class="form-control" name="password">
+      <input type="password" class="form-control" name="u_password">
     </div>
    
     <div class="form-btn text-center mt-4 ">

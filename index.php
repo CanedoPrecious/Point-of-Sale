@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Public Market POS</title>
+  <title>Admin Panel-Registration</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
  
@@ -19,21 +20,17 @@
       font-family: "Poppins", sans-serif;
     }
 
- body {
+     body {
       background: linear-gradient(to right, #17a2b8, #FFA500) 100%;
      }
     
-.container {
+    .container {
     max-width: 600px;
     margin:0 auto;
     margin-top:40px;
     margin-bottom:150px;
     padding: 50px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-   }
-
-   .form-group{
-     margin-bottom:10px;
    }
 
    .btn-primary{
@@ -107,31 +104,44 @@ if (isset($_POST['submit'])) {
     
   }
 }
-
-
 ?>
 
   <form action="index.php" method="post">
-    <div class="form-group">
-      <label class="form-label">Fullname:</label>
-      <input  type="text" class="form-control" name="name">
+    <div class="row mb-3">
+      <div class="col">
+       <label class="form-label">Fullname:</label>
+       <input  type="text" class="form-control" name="name">
+      </div>
     </div>
-    <div class="form-group">
-      <label class="form-label">Email:</label>
-      <input  type="email" class="form-control" name="email">
+
+    <div class="row mb-3">
+      <div class="col">
+       <label class="form-label">Email:</label>
+       <input  type="email" class="form-control" name="email">
+      </div>
     </div>
-    <div class="form-group">
-      <label class="form-label">Username:</label>
-      <input type="text" class="form-control" name="username">
+
+    <div class="row mb-3">
+      <div class="col">
+       <label class="form-label">Username:</label>
+       <input type="text" class="form-control" name="username">
+      </div>
     </div>
-    <div class="form-group">
+
+    <div class="row mb-3">
+      <div class="col">
       <label class="form-label">Password:</label>
       <input type="password" class="form-control" name="password">
+      </div>
     </div>
-    <div class="form-group">
-      <label class="form-label">Confirm Password:</label>
-      <input type="password" class="form-control" name="conpass">
+
+    <div class="row mb-3">
+      <div class="col">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" name="conpass">
+      </div>
     </div>
+   
     <div class="form-btn text-center mt-4 ">
       <button type="submit" class="btn btn-primary mb-3" name="submit">Register</button>
       <p>Already have an account? <a href="login.php">Login Here</a></p>
