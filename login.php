@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Login</title>
 </head>
 <body>
 <title>POINT OF SALE</title>
@@ -30,7 +30,7 @@
     max-width: 600px;
     margin:0 auto;
     margin-top:100px;
-    padding: 50px;
+    padding: 50px;xa
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
    }
 
