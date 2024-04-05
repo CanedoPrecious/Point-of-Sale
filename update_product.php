@@ -112,22 +112,21 @@ if (isset($_POST['submit'])) {
      
 
         <div class="card align-items-center">
-        <div class=" card-header mb-4">
+          <div class=" card-header mb-4">
             <h4 class="mt-4">Update Product</h4>
           </div>
 
-        
-
           <div class="card-body ">
-          <form action="./update_product.php" method="post">
+          <form action="./update_product.php" method="post"  >
                     <div class="row mb-3">
                         <div class="col">
                             <lable class="form-label">Product Code:</lable>
-                            <input type="number" required class="form-control mt-2" name="P_code" value="<?php echo $row['P_code']?>" >
+                            <input type="number" required class="form-control mt-2" name="P_code" >
                         </div>
                         <div class="col">
                             <lable class="form-label">Product Name:</lable>
                             <input type="text"  required class="form-control mt-2" name="P_name"  >
+                          
                         </div>
                     </div>
 
@@ -135,12 +134,23 @@ if (isset($_POST['submit'])) {
                         <div class="col">
                         <lable class="form-label">Category:</lable>
                         <select name="P_category" required class="form-control mt-2">
-                            <option id="bread" value="Bread & Pastry">Bread & Pastry</option>
+                        <?php
+                        include('./config/database.php');
+                        $category = mysqli_query($conn, "SELECT * FROM `pos_categori`");
+                        while ($c= mysqli_fetch_array($category))
+                         {                     
+                        ?>
+                         <option value="<?php echo $c['c_id']?>"><?php echo $c['c_category']?></option>
+                         <?php
+                          }
+                         ?>
+                       
+                            <!--<option id="bread" value="Bread & Pastry">Bread & Pastry</option>
                             <option id="fresh" value="Fresh Produce">Fresh Produce</option>
                             <option id="seafood" value="Seafoods">Seafoods</option>
-                            <option id="goods" value="Can goods">Can goods</option>
+                            <option id="goods" value="Can goods">Can goods</option>-->
                         </select>
-                        </select>
+                      
                         </div>
                         <div class="col">
                             <lable class="form-label">Stock:</lable>

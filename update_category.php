@@ -104,8 +104,6 @@ if (isset($_POST['submit'])) {
   </nav>
     </div>
 
-
-
     <div class="container mt-4">
     <div class="row">
       <div class="col-lg-10 ms-auto p-4 overflow-hidden">
@@ -114,12 +112,6 @@ if (isset($_POST['submit'])) {
         <div class=" card-header mb-4">
             <h4 class="mt-4">Update Category</h4>
           </div>
-
-          <?php
-          
-
-          
-          ?>
         
           <div class="card-body">
                 <form action="" method="post"  >

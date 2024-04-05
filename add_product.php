@@ -131,14 +131,17 @@ if (isset($_POST['submit'])) {
                   <div class="col">
                     <label>Category:</label>
                       <select name="P_category_id" required class="form-control mt-2" id="category">
+                      
                         <?php
-                       
+                        include('./config/database.php');
+                        $category = mysqli_query($conn, "SELECT * FROM `pos_categori`");
+                        while ($c= mysqli_fetch_array($category))
+                         {                     
                         ?>
-                       <option value disabled selected >Select Category</option>
-                         <option value="Bread & Pastry" >Bread & Pastry</option>
-                          <option value="Fresh Produce">Fresh Produce</option>
-                          <option value="Seafoods">Seafoods</option>
-                          <option value="Can goods">Can goods</option>
+                         <option value="<?php echo $c['c_id']?>"><?php echo $c['c_category']?></option>
+                         <?php
+                          }
+                         ?>
                       </select>
                   </div>
 

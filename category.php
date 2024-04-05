@@ -94,7 +94,7 @@ include('./config/database.php');
             <table class="table table-bordered table-hover mt-4">
                     <thead>
                         <tr class="table-dark">
-                            <th width="30" style="text-align: center; ">No of Category</th>
+                            <th width="30" style="text-align: center; ">Category ID</th>
                             <th width="100" style="text-align: center; ">Category Name</th>
                             <th width="200" style="text-align: center; ">Description</th>  
                             <th width="30" style="text-align: center;">Edit</th>
