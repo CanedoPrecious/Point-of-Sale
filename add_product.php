@@ -5,24 +5,24 @@ include('./config/database.php');
 if (isset($_POST['submit'])) {
     $P_code = $_POST['P_code'];
     $P_name = $_POST['P_name'];
-    $P_category = $_POST['P_category_id'];
+    $P_category_id = $_POST['P_category_id']; // Rename to $P_category_id for clarity
     $P_stock = $_POST['P_stock'];
     $P_price = $_POST['P_price'];
 
-    $sql= "INSERT INTO `pos_product`(`P_code`, `P_name`, `P_category_id`, `P_stock`, `P_price`) 
-    VALUES ('$P_code','$P_name','$P_category','$P_stock','$P_price')";
+    $sql = "INSERT INTO `pos_product`(`P_code`, `P_name`, `P_category_id`, `P_stock`, `P_price`) 
+            VALUES ('$P_code','$P_name','$P_category_id','$P_stock','$P_price')";
 
-    $result= mysqli_query($conn, $sql);
+    $result = mysqli_query($conn, $sql);
 
-   if ($result) {
-    header("Location: product.php?msg=Successfully Added");
-   }
-   else {
-    echo "Failed: ". mysqli_error($conn);
-   }
-
+    if ($result) {
+        header("Location: product.php?msg=Successfully Added");
+        exit(); // Add an exit after redirection
+    } else {
+        echo "Failed: " . mysqli_error($conn);
+    }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -113,6 +113,7 @@ if (isset($_POST['submit'])) {
           <div class=" card-header mb-4">
             <h4 class="mt-4">Add New Product</h4>
           </div>
+
         
           <div class="card-body ">
               <form action="" method="post"  >
@@ -129,21 +130,19 @@ if (isset($_POST['submit'])) {
 
                 <div class="row mb-3">
                   <div class="col">
-                    <label>Category:</label>
-                      <select name="P_category_id" required class="form-control mt-2" id="category">
-                      
+                     <lable class="form-label">Category:</lable>
+                       <select name="P_category" required class="form-control mt-2">
                         <?php
-                        include('./config/database.php');
+                       include('./config/database.php');
                         $category = mysqli_query($conn, "SELECT * FROM `pos_categori`");
-                        while ($c= mysqli_fetch_array($category))
-                         {                     
-                        ?>
+                       while ($c= mysqli_fetch_array($category)) {                     
+                       ?>
                          <option value="<?php echo $c['c_id']?>"><?php echo $c['c_category']?></option>
-                         <?php
-                          }
+                       <?php
+                         }
                          ?>
-                      </select>
-                  </div>
+                       </select>
+                       </div>
 
                   <div class="col">
                     <lable class="form-label">Stock:</lable>

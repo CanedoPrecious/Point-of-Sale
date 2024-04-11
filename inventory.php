@@ -96,7 +96,7 @@ include('./config/database.php');
            <th width="150" style="text-align: center; ">Product Name</th>
            <th width="150" style="text-align: center;">Sales Date</th>
            <th width="100" style="text-align: center;">Price</th>
-           <th width="100" style="text-align: center;">Sales Qty</th>
+           <th width="100" style="text-align: center;">Sales Qnty</th>
            <th width="50" style="text-align: center;">Total Amount</th>
          </tr>
        </thead>

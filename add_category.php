@@ -1,24 +1,40 @@
-
 <?php
+// Include database configuration file
 include('./config/database.php');
 
-if (isset($_POST['submit'])) {
-    $c_category = $_POST['c_category'];
-    $c_description = $_POST['c_description'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if form was submitted
+    if (isset($_POST['submit'])) {
+        // Get form data
+        $c_category = $_POST['c_category'];
+        $c_description = $_POST['c_description'];
 
-    $sql= "INSERT INTO `pos_categori`(`c_category`,`c_description`) 
-    VALUES ('$c_category ','$c_description')";
+        // Prepare SQL statement using prepared statements to prevent SQL injection
+        $sql = "INSERT INTO `pos_categori` (`c_category`, `c_description`) VALUES (?, ?)";
+        
+        // Prepare the SQL statement
+        $stmt = mysqli_prepare($conn, $sql);
+        
+        // Bind parameters to the prepared statement
+        mysqli_stmt_bind_param($stmt, "ss", $c_category, $c_description);
+        
+        // Execute the prepared statement
+        $result = mysqli_stmt_execute($stmt);
 
-    $result= mysqli_query($conn, $sql);
+        // Check if query was successful
+        if ($result) {
+            header("Location: category.php?msg=Successfully Added");
+            exit(); // Ensure that script execution stops after redirection
+        } else {
+            echo "Failed: " . mysqli_error($conn);
+        }
 
-    if ($result) {
-      header("Location: category.php?msg=Successfully Added");
-     }
-     else {
-      echo "Failed: ". mysqli_error($conn);
-     }
+        // Close statement
+        mysqli_stmt_close($stmt);
+    }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
