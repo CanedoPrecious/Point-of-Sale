@@ -1,19 +1,15 @@
 <?php
  require("./config/database.php");
-
  if (isset($_POST['login']))
  {
   $username=validate($_POST['u_username']);
   $password=validate($_POST['u_password']);
-
   $uname= filter_var($username, FILTER_SANITIZE_STRING);
   $pword= filter_var($password, FILTER_SANITIZE_STRING);
-
   if ($uname != '' && $pword !='')
    {
    $ql = "SELECT * FROM pos_users WHERE u_username='$uname' AND u_password='$pword' LIMIT 1";
    $result= mysqli_query($conn, $query);
-
    if ($result) 
    {
     if (mysqli_num_rows($result)==1) 
@@ -28,13 +24,11 @@
    }else {
     redirect('login.php', 'Something went wrong');
    }
-
   }else {
     redirect('login.php', 'All Fields are required');
    }
   
  }
-
 ?>
 
 <!DOCTYPE html>
@@ -42,10 +36,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>POS | Login</title>
 </head>
 <body>
-<title>Admin Panel-Login</title>
+
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -90,36 +84,16 @@
 <div class="container">
   <h4 class="text-center mt-2 h-font">Login</h4>
 
-  <?php
-  /*
-  if (isset($_POST['login'])) 
-  {
+ 
 
-    $username= mysqli_real_escape_string($conn, $_POST['u_username']);
-    $password= mysqli_real_query($conn, $_POST['u_password']);
-
-    $sql= "SELECT * FROM `pos_users` WHERE `u_username`='$username' AND `u_password`='$password'";
-    $result = mysqli_query($conn, $sql);
-
-   if(mysqli_num_rows($result) > 0)
-    {
-      header('Location: dashboard.php');
-
-    }else {
-      header('Location: login.php?msg=Invalid Credentials');
-    }
-  }*/
-  ?>
-
-
-  <form action="login.php" method="post">
+  <form action="./login.php" method="post">
     <div class="form-group">
       <label class="form-label">Username:</label>
-      <input type="text" class="form-control" name="u_username">
+      <input type="text" required class="form-control" name="a_username">
     </div>
     <div class="form-group">
       <label class="form-label">Password:</label>
-      <input type="password" class="form-control" name="u_password">
+      <input type="password" required class="form-control" name="a_password">
     </div>
    
     <div class="form-btn text-center mt-4 ">

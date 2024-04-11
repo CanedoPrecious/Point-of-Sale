@@ -9,7 +9,7 @@ include('./config/database.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Dashboard</title>
+    <title>POS | Dashboard</title>
 
     
     <!-- Bootstrap CSS -->
@@ -26,60 +26,60 @@ include('./config/database.php');
    crossorigin="anonymous"></script>
 
 </head>
-<body>
-  
-<div class="container-fluid text-dark p-3 d-flex align-items-center justify-content-between sticky-top" style=" box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
-    <h4 class="mb-0 h-font">TAGOLOAN PUBLIC MARKET </h4>
-   
+<body> 
+<div class="container-fluid text-light p-3 d-flex align-items-center justify-content-between sticky-top"  style=" box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+    <h6 class="mb-0 h-font">TAGOLOAN PUBLIC MARKET</h6>
+    
     <form action="./logout.php" method="post">
-      <button type="submit" class="btn btn-danger" name="logout">Logout</button>
+      <button type="submit" class="btn btn-danger" name="logout"><i class="fa-solid fa-right-from-bracket pe-2"></i>Logout</button>
     </form> 
      
 </div>
 
-   
-<div class="col-lg-2 bg-dark border-top border-3 border-secondary" id="dashboard-home">
+  
+
+<div class="col-lg-2 bg-dark" id="dashboard-home">
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid flex-lg-column align-items-stretch">
       <h4 class="mt-2 text-light">Point of Sale</h4>
-      <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse flex-column align-items-stretch mt-2" id="navbar">
+      
+      <div class="collapse navbar-collapse flex-column align-items-stretch" id="navbar">
         <ul class="nav nav-pills flex-column nav-hover">
-          <li class=" sidebar-header h-font">Admin Management</li>
+          <li class="mt-3"></li>
           <li class="sidebar-item">
             <a class="nav-link text-white" href="./dashboard.php">
               <i class="fa-solid fa-gauge pe-2"></i>Dashboard
             </a>
           </li>
+          <li class="mt-3"></li>
           <li class="nav-item">
             <a class="nav-link text-white" href="./product.php">
-              <i class="fa-solid fa-file-lines pe-2"></i>Products
+              <i class="fa fa-boxes pe-2"></i>Products
             </a>
           </li>
+          <li class="mt-3"></li>
           <li class="nav-item">
             <a class="nav-link text-white" href="./category.php">
-              <i class="fa-solid fa-file-lines pe-2"></i>Category
+            <i class="fa-solid fa-tags pe-2"></i>Category
             </a>
           </li>
-          <li class="sidebar-header h-font ">Inventory Management</li>
+          <li class="mt-3"></li>
           <li class="nav-item">
             <a class="nav-link text-white" href="./inventory.php">
-              <i class="fa-solid fa-clipboard-list pe-2"></i>Inventory
+              <i class="fa fa-list pe-2"></i></i>Inventory
             </a>
           </li>
-          <li class="sidebar-header h-font"> Sales Management</li>
+          <li class="mt-3"></li>
           <li class="nav-item">
             <a class="nav-link text-white " href="./sales.php">
-              <i class="fa-solid fa-cart-shopping pe-2"></i>Sales Report
+              <i class="fa-solid fa-cart-shopping pe-2"></i>Sales
             </a>
           </li>
-          <li class="sidebar-header h-font"> Account Management
-          </li>
+         
+          <li class="mt-3"></li>
           <li class="nav-item">
             <a class="nav-link text-white " href="./accounts.php">
-              <i class="fa-solid fa-circle-user pe-2"></i>User
+             <i class="fa fa-users pe-2"></i>User
             </a>
           </li>
         </ul>
@@ -92,14 +92,16 @@ include('./config/database.php');
 
 <div class="container-fluid mt-4  ">
   <div class="row">
-    <div class="col-xl-10 ms-auto p-4">
-      <h5 class="mb-4">Dashboard</h5>
-
-      <div class="row me-5 ">
-       <div class="col-xl-3 col-md-6 ">
-        <div class="card shadow bg-primary text-white mb-4">
-          <div class="card-body">Total Product
-          <?php
+ 
+    <div class="col-xl-10 ms-auto">
+     <h5 class="mb-4"><i class="fa-solid fa-gauge pe-2"></i>Dashboard</h5>
+   
+     
+      <div class="row mb-3 ">
+        <div class="col-xl-3 col-md-6 ">
+          <div class="card shadow bg-primary text-white mb-4">
+            <div class="card-body">Total Product
+              <?php
                 $product = "SELECT * FROM `pos_product`";
                 $sql = mysqli_query($conn, $product);
 
@@ -110,8 +112,8 @@ include('./config/database.php');
                   echo '<h4 class="mb-0">0</h4>';
                 }
               ?>
-          </div>
-           <div class="card-footer d-flex align-items-center justify-contend-between">
+            </div>
+            <div class="card-footer d-flex align-items-center justify-contend-between">
              <a href="./product.php" class="small text-white stretched-link">View Details</a>
              <div class="small text-white"><i class="fas fa-angle-right"></i></div>
             </div>
@@ -132,7 +134,6 @@ include('./config/database.php');
                   echo '<h4 class="mb-0">0</h4>';
                 }
               ?>
-
             </div>
             <div class="card-footer d-flex align-items-center justify-contend-between">
               <a href="./category.php" class="small text-white stretched-link">View Details</a>
@@ -142,10 +143,10 @@ include('./config/database.php');
         </div>
 
         <div class="col-xl-3 col-md-6">
-            <div class="card shadow bg-danger text-white">
-              <div class="card-body">Accounts
+          <div class="card shadow bg-danger text-white">
+            <div class="card-body">Accounts
               <?php
-                $account = "SELECT * FROM `pos_users`";
+                $account = "SELECT * FROM `pos_accnt`";
                 $sql = mysqli_query($conn, $account);
 
                 if ($total = mysqli_num_rows($sql)) 
@@ -155,44 +156,73 @@ include('./config/database.php');
                   echo '<h4 class="mb-0">0</h4>';
                 }
               ?>
-              </div>
-              <div class="card-footer d-flex align-items-center justify-contend-between">
-                <a href="./accounts.php" class="small text-white stretched-link">View Details</a>
-                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-              </div>
             </div>
-          </div>        
+            <div class="card-footer d-flex align-items-center justify-contend-between">
+              <a href="./accounts.php" class="small text-white stretched-link">View Details</a>
+              <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+          </div>
+        </div> 
 
-
-        <div class="row mb-5">
         <div class="col-xl-3 col-md-6">
-            <div class="card shadow bg-secondary text-white">
-              <div class="card-body">Sales Report</div>
+          <div class="card shadow bg-success text-white">
+            <div class="card-body">Total Sale
+              <h4 class="mb-0">₱</h4>
+            </div>
               <div class="card-footer d-flex align-items-center justify-contend-between">
                 <a href="./sales.php" class="small text-white stretched-link">View Details</a>
                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-              </div>
             </div>
           </div>
-
-          
-        <div class="col-xl-3 col-md-5">
-          <div class="card shadow bg-success text-white mb-4">
-           <div class="card-body">Inventory
-           </div>
-            <div class="card-footer d-flex align-items-center justify-contend-between">
-             <a href="./inventory.php" class="small text-white stretched-link">View Details</a>
-             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-            </div>
-          </div>
-        </div>
-
-
-         
         </div>
       </div>
+
+        <div class="row">         
+          <div class="col-xl col-md-6">
+            <div class="card shadow mb-4">
+             <div class="card-body"><h5>Sales Report</h5>
+             <table class="table table-bordered table-hover mt-3">
+          <thead>
+          <tr class="table-dark">
+              <th width="50" style="text-align: center;">No.</th>
+                <th width="150" style="text-align: center; ">Product Name</th>
+                <th width="150" style="text-align: center;">Sales Date</th>
+                <th width="100" style="text-align: center;">Price (Php)</th>
+                <th width="100" style="text-align: center;">Sales Qty</th>
+                <th width="50" style="text-align: center;">Total Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+      <th scope="row">1</th>
+      <td>Apples</td>
+      <td><small>03-20-2024</small></td>
+      <td>10</td>
+      <td>10</td>
+      <td>100</td>
+    </tr>
+    <tr>
+   <th ></th>
+      <td></td>
+      <td></td>
+      <td><h6 style="text-align: center; ">Total:</h6></td>
+      <td><h6 style="text-align: center; ">30</h6></td>
+      <td><h6 style="text-align: center; ">400</h6></td>
+    </tr>
+    </tbody>
+             </table>
+
+
+
+             </div>
+             <div class="card-footer d-flex align-items-center justify-contend-between">
+               <a href="./sales.php" class="small text-dark stretched-link">View Details</a>
+                <div class="small text-dark"><i class="fas fa-angle-right"></i></div>
+                </div>
+              </div>
+            </div> 
+
     </div>
   </div>
-</div>
 </body>
 </html>
