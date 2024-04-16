@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Poppins:wght@400;500;600&display=swap');
 
 
-*{
+  *{
     font-family: "Poppins", sans-serif;
    }
    .h-font{
@@ -14,17 +14,17 @@
      height: 100%;
      background: linear-gradient(to right, #17a2b8, #FFA500) 100%;
      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-
    }
    .sidebar-header {
      color: #e9ecef;
      font-size: .75rem;
      padding:1.5rem 1.5rem .375rem;
    }
-  body{
-   background: linear-gradient(to right, #17a2b8, #FFA500) 100%;
-  }
-
+ 
+   body {
+    background: linear-gradient(to right, #17a2b8, #FFA500) 100%;
+   }
+  
 
 
 
