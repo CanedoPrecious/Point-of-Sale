@@ -1,8 +1,8 @@
 
 <?php
 include('./config/database.php');
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,14 +85,16 @@ include('./config/database.php');
     <div class="row">
         <div class="col-lg-10 ms-auto overflow-hidden">
             <div class="card">
-                <div class="card-header">Sales Form</div>
+                <div class="card-header">Sales Form
+                
+                </div>
                 <div class="card-body">
-                    <form action="">
+                    <form action="sales_form.php" method="post">
                         <div class="row mb-3">
                             <div class="col-md-5">
                                 <label for="control-label">Product</label>
-                                <select name="product" id="" class="form-control">
-                                <option value="0" selected="" disabled >Select Product</option>
+                                <select name="product" id="" class="form-select">
+                                <option value="0" selected="" disabled >--Select Product--</option>
 
                                 <?php
                                 include('./config/database.php');
@@ -110,18 +112,18 @@ include('./config/database.php');
                             </div>
                             <div class="col-md-3">
                                 <label for="control-form">Qty</label>
-                                <input type="number" name="qty">
+                                <input type="number" name="qty" class="form-control" value="1"/>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <div class="col-md-3">
+                          <div class="col-md-3">
                                 <label for="control-label"></label>
-                                <button class="btn btn-sm btn-primary" type="submit">
-                                    <i class="fa fa-plus"></i> Add to List
+                                <button class="btn btn-sm btn-primary" type="save">
+                                    <i class="fa fa-plus"></i> Add Product
                                 </button>
                                 <a href="./sales.php" class="btn btn-sm btn-danger">Cancel</a>
-
-                            </div>
+                               
+                              </div>
                         </div>
                            
 
@@ -132,13 +134,16 @@ include('./config/database.php');
                                         <tr>
                                             <th style="text-align: center;" >No.</th>
                                            <th style="text-align: center;">Product</th>
-								           <th style="text-align:center;">Qty</th>
-								           <th style="text-align:center;">Price</th>
-								           <th style="text-align:center;">Amount</th>
-								           <th style="text-align:center;"></th>
+								                           <th style="text-align:center;">Price</th>
+								                           <th style="text-align:center;">Quantity</th>
+								                           <th style="text-align:center;">Amount</th>
+                                        </tr>
+                                        <th style="text-align:center;"></th>
                                         </tr>
                                     </thead>
-                                    <tbody></tbody>
+                                    <tbody>
+
+                                    </tbody>
                                     <tfoot>
                                         <tr>
                                             <th style="text-align: right"  colspan="4" >Total</th>
@@ -149,7 +154,7 @@ include('./config/database.php');
                                 </table>
                             </div>
                             <div class="row">
-							  <button class="btn btn-primary btn-sm btn-block float-right " type="button" id="pay">Pay</button>
+							  <button class="btn btn-primary btn-sm" type="button" id="pay">Pay</button>
 						    </div>
                         </div>
                        

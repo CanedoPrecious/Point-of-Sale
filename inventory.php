@@ -34,7 +34,7 @@ include('./config/database.php');
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid flex-lg-column align-items-stretch">
       <h4 class="mt-2 text-light">Point of Sale</h4>
-      >
+      
       <div class="collapse navbar-collapse flex-column align-items-stretch" id="navbar">
         <ul class="nav nav-pills flex-column nav-hover">
           <li class="mt-3"></li>
@@ -101,6 +101,29 @@ include('./config/database.php');
 							<th class="text-center">Stock Available</th>
             </tr>
            </thead>
+           <tbody>
+            <tr>
+      <th style="text-align: center;" scope="row">1</th>
+      <td style="text-align: center;">122</td>
+      <td style="text-align: center;">12</td>
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">10</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;" scope="row">2</th>
+      <td style="text-align: center;">1000</td>
+      <td style="text-align: center;">10</td>
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">8</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;" scope="row">3</th>
+      <td style="text-align: center;">1001</td>
+      <td style="text-align: center;">10</td>
+      <td style="text-align: center;">5</td>
+      <td style="text-align: center;">5</td>
+    </tr>
+    </tbody>
             
           </table>
 

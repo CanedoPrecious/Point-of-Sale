@@ -98,11 +98,41 @@ include('./config/database.php');
             <tr class="table-dark">
                 <th style="text-align: center;">No.</th>
                 <th style="text-align: center; ">Product Name</th>
-                <th style="text-align: center;">Qty</th>
                 <th style="text-align: center;">Price</th>
+                <th style="text-align: center;">Qty</th>
                 <th style="text-align: center;">Amount</th>
             </tr>
           </thead> 
+          <tbody>
+            <tr>
+      <th style="text-align: center;" scope="row">1</th>
+      <td style="text-align: center;">122</td>
+      <td style="text-align: center;">100</td>
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">200</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;" scope="row">2</th>
+      <td style="text-align: center;">1000</td>
+      <td style="text-align: center;">15</td>
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">30</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;" scope="row">3</th>
+      <td style="text-align: center;">1001</td>
+      <td style="text-align: center;">10</td>
+      <td style="text-align: center;">5</td>
+      <td style="text-align: center;">50</td>
+    </tr>
+    <tr>
+  
+      <th style="text-align: right"  colspan="4" >Total</th>
+      <th style="text-align: center;">300.00</th>
+      
+                                        
+    </tr>
+    </tbody>
       </table>
        </div>
       </div>    

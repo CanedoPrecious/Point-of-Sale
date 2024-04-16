@@ -43,7 +43,7 @@
   <div class="container">
   <h4 class="text-center mt-2 h-font">Registration</h4>
 
-  
+   
 <?php
 if (isset($_POST['submit'])) {
   $name = $_POST['name'];
@@ -90,6 +90,7 @@ if (isset($_POST['submit'])) {
 }
 
 ?>
+
 
   <form action="index.php" method="post">
     
