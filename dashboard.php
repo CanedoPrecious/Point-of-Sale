@@ -167,7 +167,7 @@ include('./config/database.php');
         <div class="col-xl-3 col-md-6">
           <div class="card shadow bg-success text-white">
             <div class="card-body">Total Sale
-              <h4 class="mb-0">₱</h4>
+              <h4 class="mb-0">₱ 300</h4>
             </div>
               <div class="card-footer d-flex align-items-center justify-contend-between">
                 <a href="./sales.php" class="small text-white stretched-link">View Details</a>
@@ -185,29 +185,40 @@ include('./config/database.php');
           <thead>
           <tr class="table-dark">
               <th width="50" style="text-align: center;">No.</th>
-                <th width="150" style="text-align: center; ">Product Name</th>
-                <th width="150" style="text-align: center;">Sales Date</th>
+                <th width="150" style="text-align: center; ">Product ID</th>
                 <th width="100" style="text-align: center;">Price (Php)</th>
                 <th width="100" style="text-align: center;">Sales Qty</th>
-                <th width="50" style="text-align: center;">Total Amount</th>
+                <th width="50" style="text-align: center;">Amount</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-      <th scope="row">1</th>
-      <td>Apples</td>
-      <td><small>03-20-2024</small></td>
-      <td>10</td>
-      <td>10</td>
-      <td>100</td>
+      <th style="text-align: center;" scope="row">1</th>
+      <td style="text-align: center;">122</td>
+      <td style="text-align: center;">100</td>
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">200</td>
     </tr>
     <tr>
-   <th ></th>
-      <td></td>
-      <td></td>
-      <td><h6 style="text-align: center; ">Total:</h6></td>
-      <td><h6 style="text-align: center; ">30</h6></td>
-      <td><h6 style="text-align: center; ">400</h6></td>
+      <th style="text-align: center;" scope="row">2</th>
+      <td style="text-align: center;">1000</td>
+      <td style="text-align: center;">15</td>
+      <td style="text-align: center;">2</td>
+      <td style="text-align: center;">30</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;" scope="row">3</th>
+      <td style="text-align: center;">1001</td>
+      <td style="text-align: center;">10</td>
+      <td style="text-align: center;">5</td>
+      <td style="text-align: center;">50</td>
+    </tr>
+    <tr>
+  
+      <th style="text-align: right"  colspan="4" >Total</th>
+      <th style="text-align: center;">300.00</th>
+      
+                                        
     </tr>
     </tbody>
              </table>

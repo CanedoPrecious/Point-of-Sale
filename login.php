@@ -8,7 +8,7 @@ if (isset($_POST['login'])) {
     $username = mysqli_real_escape_string($conn, $_POST['u_username']);
     $password = mysqli_real_escape_string($conn, $_POST['u_password']);
 
-    $sql = "SELECT * FROM pos_users WHERE u_username=? LIMIT 1";
+    $sql = "SELECT * FROM pos_accnt WHERE a_username=? LIMIT 1";
     $stmt = mysqli_stmt_init($conn);
     if (mysqli_stmt_prepare($stmt, $sql)) {
       mysqli_stmt_bind_param($stmt, "s", $username);
@@ -16,7 +16,7 @@ if (isset($_POST['login'])) {
       $result = mysqli_stmt_get_result($stmt);
       
       if ($row = mysqli_fetch_assoc($result)) {
-        if (password_verify($password, $row['u_password'])) {
+        if (password_verify($password, $row['a_password'])) {
           // Password is correct, redirect to dashboard
           header('Location: dashboard.php');
           exit();

@@ -43,10 +43,8 @@
   <div class="container">
   <h4 class="text-center mt-2 h-font">Registration</h4>
 
-  
+   
 <?php
-require("./config/database.php");
-
 if (isset($_POST['submit'])) {
   $name = $_POST['name'];
   $email = $_POST['email'];
@@ -56,15 +54,9 @@ if (isset($_POST['submit'])) {
   $passworddef= password_hash($password, PASSWORD_DEFAULT);
   $error = array();
   if (empty($name) OR empty($email) OR empty($username) OR empty($password) OR empty($conpass) ) {
-    array_push($error,"All Fields are Required");
+   array_push($error,"All Fields are Required");
   }
 
-  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    array_push($error,"Email is not valid");
-  }
-  if(strlen($password)<8) {
-    array_push($error,"Password must be at least 8 characters long");
-  }
   if ($password!==$conpass) {
     array_push($error,"Password does not match");
   }
@@ -82,20 +74,18 @@ if (isset($_POST['submit'])) {
       echo "<div class='alert alert-danger'>$errors</div>";
     }
   } else {
-    $sql = "INSERT INTO pos_users (u_name, u_email, u_username, u_password) VALUES (?, ?, ?, ?)";
-    $stmt = mysqli_stmt_init($conn);
-    $preparestmt = mysqli_stmt_prepare($stmt, $sql);
+   $sql = "INSERT INTO pos_accnt (a_name, a_email, a_username, a_password) VALUES (?, ?, ?, ?)";
+   $stmt = mysqli_stmt_init($conn);
+   $preparestmt = mysqli_stmt_prepare($stmt, $sql);
 
-    if ($preparestmt) {
-      mysqli_stmt_bind_param($stmt,"ssss", $name, $email, $username, $passworddef );
-      mysqli_stmt_execute($stmt);
+   if ($preparestmt) {
+    mysqli_stmt_bind_param($stmt,"ssss", $name, $email, $username, $passworddef );
+    mysqli_stmt_execute($stmt);
+    echo "<div class='alert alert-success'>You are successfully Registered.</div>";
+   } else{
+    die("Something went wrong");
+   }
 
-      // Registration successful, redirect to login page
-      header('Location: login.php');
-      exit();
-    } else{
-      die("Something went wrong");
-    }
   }
 }
 

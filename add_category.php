@@ -3,11 +3,11 @@
 include('./config/database.php');
 
 if (isset($_POST['submit'])) {
+     $c_id = $_POST['c_id'];
     $c_category = $_POST['c_category'];
-    $c_description = $_POST['c_description'];
+    
 
-    $sql= "INSERT INTO `pos_categori`(`c_category`,`c_description`) 
-    VALUES ('$c_category ','$c_description')";
+    $sql= "INSERT INTO `pos_categori`(`c_id`, `c_category`) VALUES ('$c_id','$c_category')";
 
     $result= mysqli_query($conn, $sql);
 
@@ -113,14 +113,14 @@ if (isset($_POST['submit'])) {
           <div class="card-header">
           <h4 class="mt-4">Add New Category</h4>
           </div>
-          
+        
         
           <div class="card-body">
               <form action="" method="post"  >
               <div class="row mb-3">
                   <div class="col">
                      <label class="form-label">Category No:</label>
-                      <input type="number" required class="form-control mt-2" name="c_id"></input>
+                      <input type="number" required class="form-control mt-2" name="c_id" value="<?php echo $row['c_id']?>"></input>
                   </div>
                 </div>
                       

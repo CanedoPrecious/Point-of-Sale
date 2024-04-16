@@ -9,19 +9,19 @@ if (isset($_POST['submit'])) {
     $P_stock = $_POST['P_stock'];
     $P_price = $_POST['P_price'];
 
-    $sql = "INSERT INTO `pos_product`(`P_code`, `P_name`, `P_category_id`, `P_stock`, `P_price`) 
+        $sql = "INSERT INTO `pos_product`(`P_code`, `P_name`, `P_category_id`, `P_stock`, `P_price`) 
             VALUES ('$P_code','$P_name','$P_category_id','$P_stock','$P_price')";
 
-    $result = mysqli_query($conn, $sql);
-
+          $result = mysqli_query($conn, $sql);
+ 
    if ($result) {
-    header("Location: product.php?msg=Successfully Added");
+    header("Location: product.php?success");
    }
    else {
     echo "Failed: ". mysqli_error($conn);
    }
+} 
 
-}
 ?>
 
 
@@ -136,7 +136,8 @@ if (isset($_POST['submit'])) {
                   <div class="row mb-3">
                   <div class="col">
                     <label>Category:</label>
-                      <select name="P_category_id" required class="form-control mt-2" id="category">
+                      <select name="P_category_id" required class="form-select mt-2" id="category">
+                        <option value="0" selected disabled>--Select Category--</option>
                       
                         <?php
                         include('./config/database.php');

@@ -140,7 +140,7 @@ if (isset($_POST['submit'])) {
                     <div class="row">
                         <div class="col">
                         <lable class="form-label">Category:</lable>
-                        <select name="P_category_id" required class="form-control mt-2" >
+                        <select name="P_category_id" required class="form-select mt-2" >
                         <option selected="" disabled>Select Category</option>
 
                         <?php

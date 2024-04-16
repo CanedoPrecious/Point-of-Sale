@@ -94,7 +94,7 @@ include('./config/database.php');
         <table class="table table-bordered table-hover mt-3 ">
           <thead>
               <tr class="table-dark">
-               <th style="text-align: center;">No. of User</th>
+               <th style="text-align: center;">User ID</th>
                <th style="text-align: center; ">Name</th>
                <th style="text-align: center;">Username</th>      
            </thead>
